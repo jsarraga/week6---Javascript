@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <link rel="stylesheet" type="text/css" href="src/styles/index.css" />
+    <title>Javascript Intro</title>
+</head>
+
+<body>
+
+    <header>
+        <h2>FizzBuzz Generator</h2>
+    </header>
+    <main>
+        <div class="container">
+            <button id="theButton">Generate</button>
+        </div>
+        <div class="container">
+            <div id="theOutput"></div>
+        </div>
+    </main>
+    
+<script>
+    let theOutput = document.getElementById("theOutput");
+    let theButton = document.getElementById("theButton");
+
+    function fizzbuzz() {
+        for (let i=0; i<51; i++) {
+            if (i % 3 === 0 && i % 5 === 0) {
+            theOutput.innerHTML += "<p>" + i + ": FizzBuzz </p>"
+        }   else if (i % 5 === 0) {
+            theOutput.innerHTML += "<p>" + i + ": Buzz</p>"
+        }   else if (i % 3 === 0) {
+            theOutput.innerHTML += "<p>" + i + ": Fizz</p>"
+        } 
+        }
+    }
+
+    theButton.addEventListener("click", (e) => {fizzbuzz()})
+
+</script>
+</body>
