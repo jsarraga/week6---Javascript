@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <link rel="stylesheet" type="text/css" href="src/styles/index.css" />
+    <title>Javascript Intro</title>
+</head>
+<body>
+    <h2>JavaScript: Day 3</h2>
+    <p>Arrays, Classes, the Spread operator</p>
+
+    <div class="people">
+        <p>Greg</p>
+        <p>Justin</p>
+        <p>Abdoul</p>
+    </div>
+
+<script class="Notes">
+
+const posts = [
+     {
+        "code":"BAcyDyQwcXX",
+        "caption":"Lunch #hamont",
+        "likes":56,
+        "id":"1161022966406956503",
+        "display_src":"https://scontent.cdninstagram.com/hphotos-xap1/t51.2885-15/e35/12552326_495932673919321_1443393332_n.jpg"
+     },
+     {
+        "code":"BAcJeJrQca9",
+        "caption":"Snow! ⛄️🌨❄️ #lifewithsnickers",
+        "likes":59,
+        "id":"1160844458347054781",
+        "display_src":"https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-15/e35/12407344_1283694208323785_735653395_n.jpg"
+     },
+     {
+        "code":"BAF_KY4wcRY",
+        "caption":"Cleaned my office and mounted my recording gear overhead. Stoked for 2016!",
+        "likes":79,
+        "id":"1154606670337393752",
+        "display_src":"https://scontent.cdninstagram.com/hphotos-xpf1/t51.2885-15/e35/923995_1704188643150533_1383710275_n.jpg"
+     },
+     {
+        "code":"BAPIPRjQce9",
+        "caption":"Making baby pancakes for one early rising baby. ☕️🍴",
+        "likes":47,
+        "id":"1157179863266871229",
+        "display_src":"https://scontent.cdninstagram.com/hphotos-xap1/t51.2885-15/e35/12407480_1654828594805097_152207166_n.jpg"
+     }
+]
+
+const code = "BAcJeJrQca9";
+
+const examplepost = posts.find(post => {
+    console.log(post.code);
+    if (post.code === code) {
+        return true;
+    } return false;
+});
+
+const post = posts.find(post => post.code === code)
+const postIndex = posts.findIndex(post => post.code === code);
+
+console.log(post, postIndex)
+
+const people = document.querySelectorAll(".people p")
+console.log(people)
+
+const peopleArray = Array.from(people, person => {
+    return person.textContent
+})
+
+console.log(peopleArray)
+
+function sumAll() {
+    const nums = Array.from(arguments);
+    return nums.reduce((prev, next) => prev + next, 0)
+}
+
+console.log(sumAll(2, 34, 23, 234, 234, 234234, 234234, 2342))
+
+const ages = Array.of(2, 34, 23)
+console.log(ages)
+
+</script>
+
+<script class="classes">
+
+class Dog {
+    constructor(name, breed) {
+        this.name = name;
+        this.breed = breed;
+    }
+    bark() {
+        console.log('Bark bark!')
+    }
+    get description() {
+        return `${this.name} is a ${this.breed} dog.`
+    }
+    set nickname(value) {
+        this.nickName = value
+    }
+    static info() {
+        console.log('A dog has 4 legs.')
+    }
+}
+
+const ollie = new Dog('Ollie', 'brown')
+console.log(ollie.name)
+ollie.bark()
+console.log(ollie.description)
+ollie.nickname = "Ol"
+console.log(ollie)
+
+Dog.info()
+
+
+class MovieCollection extends Array {
+    constructor(name, ...items) {
+        super(...items);
+        this.name = name
+    }
+    add(movie) {
+        this.push(movie);
+    }
+    topRated(limit = 10) {
+        return this.sort((a,b) => (a.stars > b.stars ? -1 : 1))
+    }
+}
+
+const movies = new MovieCollection('Favorite Movies',
+    { name: 'Bee Movie', stars: 10 },
+    { name: 'Star Wars Trek', stars: 1 },
+    { name: 'Virgin Suicides', stars: 7 },
+    { name: 'King of the Road', stars: 8 }
+)
+
+movies.add({name: 'Titanic', stars: 5})
+console.table(movies.topRated())
+
+class Spaniel extends Dog {
+    constructor(name, breed="Spaniel") {
+        super(name, breed)
+    }
+    imSpaniel() {
+        console.log("I'm a spaniel")
+    }
+}
+
+const numbers = [1,2,3,4,5,6,7,8]
+const otherNumbers = [...numbers, 10]
+
+const [one, two, ...others] = otherNumbers
+
+console.log('otherNumbers:  ', otherNumbers)
+console.log(others)
+
+</script>
+</body>
+</html>

@@ -8,7 +8,6 @@
     <title>Javascript Intro</title>
 </head>
 <body>
-
     <header>
         <h1>Sample Code</h1>
         <p> Day 2 of Javascript</p>
@@ -17,8 +16,8 @@
     <form>
         Enter a phrase : <input type="text" class="input" id="catchPhrase" /><br>
         Enter a second phrase : <input type="text" class="input" id="catchPhrase2" /><br>
-        <input type="button" class="button" onclick="displayPhrase()" value="CatchPhrase" />
-        <input type="button" class="button" onclick="combinePhrases()" value="CatchPhrases" />
+        <input type="button" class="button" onClick="displayPhrase()" value="CatchPhrase" />
+        <input type="button" class="button" onClick="combinePhrases()" value="CatchPhrases" />
     </form>
 
     <div class="phrase">
@@ -35,62 +34,82 @@
     function combinePhrases() {
         let phrase1 = document.getElementById("catchPhrase").value;
         let phrase2 = document.getElementById("catchPhrase2").value;
-        const combined = phrase1 + " " + phrase2
-        document.getElementById("phrase").innerHTML = combined
+        const combined = phrase1 + " " + phrase2;
+        document.getElementById("phrase").innerHTML = combined;
     }
-
-
 
 </script>
 
+
+
+
 <script class="Notes">
 
-let userName = "Greg";
-let knowsJavaScript = true;
+let userName
+let knowsJavaScript = false;
 
-if (knowsJavaScript && userName) { 
+if (knowsJavaScript && userName) {
     console.log(`Great, ${userName}! Get ready to practice!`)
-}
-else if (knowsJavaScript) {
-    console.log(`Great! get ready to practice!`)
-}
-else if (userName) {
+} else if (knowsJavaScript) {
+    console.log('Great! Get ready to practice!')
+} else if (userName) {
     console.log(`Great, ${userName}! Get ready to learn something new!`)
-}
-else {
+}   else {
     console.log("no condition was true")
 }
+
 
 // if the fist value is true, it will return the second value. 
 // if the first value is false, it will return the first value
 
 console.log(knowsJavaScript && userName)
 
+
 let isPhoneCharged = true;
 if (!isPhoneCharged) {
-    console.log('no need to charge')
+    console.log('charge your phone!')
 } else {
     console.log('no need to charge')
 }
+
 // !isPhoneCharged returns opposite value
 
 let isLocked = false;
 // boolean ? code if true : code if false;
 
 isLocked ? console.log('you need a key to open this') :
-            console.log('you can open this now')
+        console.log('you can open this now')
 
 
 let randomNumber = Math.floor(Math.random()*8)
 // gives random integer between 1 and 8
+//console.log(randomNumber)
 let eightBall = randomNumber;
 
 switch (eightBall) {
     case 0:
-        console.log('it is certain')
+        console.log('it is certain');
         break;
     case 1:
-        console.log('it is decidedly so')
+        console.log('it is decidedly so');
+        break;
+    case 2:
+        console.log('Reply hazy try again');
+        break;
+    case 3:
+        console.log('Cannot predict now');
+        break;
+    case 4:
+        console.log('Do not count on it');
+        break;
+    case 5:
+        console.log('My sources say no');
+        break;
+    case 6:
+        console.log('Outlook not so good');
+        break;
+    default:
+        console.log('Signs point to yes');
         break;
 }
 
@@ -98,24 +117,29 @@ function calculateBill(total, tax=0.13, tip=0.2) {
     return total + (total*tax) + (total*tip);
 }
 
-const totalBill = calculateBill( 100, undefined, 0.25)
-console.log(`the total bill is ${totalBill}`)
+const totalBill = calculateBill(100, undefined, 0.25);
+console.log(`the total bill is: ${totalBill}`)
 
 
 const ages = [23,34,5,12,97,88,45,12,13,26,27]
 
-const old = ages.filter(age => age >= 40)
-console.log(old)
+function filterAge(age) {
+    return age >= 40
+}
+
 // age => condition same as:
 // function filterAge(age) {
 //     return age >= 40
 // }
 
+const old = ages.filter(age => age >= 40)
+console.log(old)
+
 const mapped = ages.map(age => age/2)
 console.log(mapped)
+
 // map applies condiditon to everything in ages object
 
 </script>
-
-</body>
+<script type="text/javascript" src="main.js"></script></body>
 </html>
